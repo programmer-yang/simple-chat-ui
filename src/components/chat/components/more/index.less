@@ -1,0 +1,30 @@
+.component-chat-more {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 20px;
+  transition: height ease-out 0.2s;
+
+  &-show {
+    height: 124px;
+  }
+  &-close {
+    height: 0;
+  }
+
+  &-item {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    margin-right: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    img {
+      width: 28px;
+      height: 24px;
+    }
+  }
+}
