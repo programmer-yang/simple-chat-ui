@@ -11,7 +11,6 @@ var Input = function (props) {
     var moreVisible = chatData.moreVisible;
     var _a = useState(""), inputValue = _a[0], setInputValue = _a[1];
     var onTestKeyDown = function (e) {
-        console.log("e.key", e.key);
         if (e.key === "Enter") {
             onSendMessage(inputValue);
             setInputValue("");

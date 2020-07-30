@@ -26,7 +26,6 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const onTestKeyDown = (e: React.KeyboardEvent) => {
-    console.log("e.key", e.key);
     if (e.key === "Enter") {
       onSendMessage(inputValue);
       setInputValue("");
