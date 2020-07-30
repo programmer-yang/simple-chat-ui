@@ -1,4 +1,4 @@
 {
-  "packages": ["build/*"],
+  "packages": ["build"],
   "version": "0.0.5"
 }
