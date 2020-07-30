@@ -1,4 +1,4 @@
-.component-chat-message {
+.component-chat-audio {
   display: flex;
   align-items: start;
   font-size: 18px;
@@ -14,23 +14,43 @@
       height: 100%;
     }
   }
-  .text {
-    padding: 12px;
-    font-size: 17px;
+  .audio {
     line-height: 24px;
-    width: 65.3333vw;
+    width: 16vw;
+    height: 15.4667vw;
+    // height: 58px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding-left: 6.4vw;
     box-sizing: border-box;
+    img {
+      width: 3.2vw;
+      height: 4.8vw;
+    }
   }
   &-master {
     justify-content: flex-start;
     .avatar {
       margin-right: 15px;
     }
-    .text {
+    .audio {
       background-color: #fff;
       border-top-right-radius: 8px;
       border-bottom-right-radius: 8px;
-      border-bottom-left-radius: 8px;
+    }
+    .audio-unread {
+      position: relative;
+      &:after {
+        content: " ";
+        position: absolute;
+        width: 2.4vw;
+        height: 2.4vw;
+        border-radius: 2.4vw;
+        background-color: #ff4c4c;
+        right: -4.8vw;
+        top: 0;
+      }
     }
   }
   &-guest {
@@ -38,12 +58,10 @@
     .avatar {
       margin-left: 15px;
     }
-    .text {
+    .audio {
       background-color: #8256f5;
-      color: #ffffff;
       border-top-left-radius: 8px;
       border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
     }
   }
 }

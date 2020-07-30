@@ -1,8 +1,7 @@
 import * as React from "react";
-import "./index.less";
 import { createCs } from "../../utils";
 
-import addIcon from "../../assets/add.svg";
+import * as addIcon from "../../assets/add.svg";
 
 import { chatDataTypes } from "../../";
 
@@ -11,14 +10,14 @@ const { useState, useRef, useEffect } = React;
 const cs = createCs("component-chat-input");
 
 interface InputProps {
-  onClickMore: Function;
+  onClickMore: (e: boolean) => void;
   chatData: chatDataTypes;
   onFocus: (e: React.FocusEvent<HTMLInputElement>) => void;
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onSendMessage: (value: String) => void;
+  onSendMessage: (value: string) => void;
 }
 
-const Input = (props: InputProps) => {
+const Input: React.FC<InputProps> = (props: InputProps) => {
   const inputRef = useRef<HTMLDivElement>();
 
   const { onClickMore, chatData, onFocus, onBlur, onSendMessage } = props;
@@ -27,6 +26,7 @@ const Input = (props: InputProps) => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const onTestKeyDown = (e: React.KeyboardEvent) => {
+    console.log("e.key", e.key);
     if (e.key === "Enter") {
       onSendMessage(inputValue);
       setInputValue("");
@@ -57,7 +57,11 @@ const Input = (props: InputProps) => {
         onChange={onChangeInput}
       />
       <div className={cs("more")}>
-        <img src={addIcon} alt="" onClick={() => onClickMore(!moreVisible)} />
+        <img
+          src={addIcon.default ? addIcon.default : addIcon}
+          alt=""
+          onClick={() => onClickMore(!moreVisible)}
+        />
       </div>
     </div>
   );

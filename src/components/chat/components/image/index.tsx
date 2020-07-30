@@ -2,15 +2,15 @@ import * as React from "react";
 import { createCs } from "../../utils";
 import { AuthorTypes } from "../../types";
 
-const cs = createCs("component-chat-message");
+const cs = createCs("component-chat-image");
 
-interface MessageProps {
+interface ImageProps {
   type: AuthorTypes;
   avatarUrl?: string;
   text: string;
 }
 
-const Message: React.FC<MessageProps> = (props: MessageProps) => {
+const Image: React.FC<ImageProps> = (props: ImageProps) => {
   const { type, text, avatarUrl } = props;
   return (
     <div
@@ -23,12 +23,16 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
           <div className="avatar">
             <img src={avatarUrl} alt="" />
           </div>
-          <div className={"text"}>{text}</div>
+          <div className={"image"}>
+            <img src={text} alt="" />
+          </div>
         </>
       ) : null}
       {type === AuthorTypes.guest ? (
         <>
-          <div className="text">{text}</div>
+          <div className={"image"}>
+            <img src={text} alt="" />
+          </div>
           <div className="avatar">
             <img src={avatarUrl} alt="" />
           </div>
@@ -38,4 +42,4 @@ const Message: React.FC<MessageProps> = (props: MessageProps) => {
   );
 };
 
-export default Message;
+export default Image;
