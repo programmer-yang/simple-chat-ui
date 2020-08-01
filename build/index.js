@@ -51,7 +51,7 @@ var reducer = function (state, action) {
     }
 };
 var Chat = function (props) {
-    var messageList = props.messageList, onSendMessageProp = props.onSendMessage, moreHeight = props.moreHeight, onClickPhoto = props.onClickPhoto;
+    var messageList = props.messageList, onSendMessageProp = props.onSendMessage, moreHeight = props.moreHeight, onClickPhoto = props.onClickPhoto, onMoveToTop = props.onMoveToTop, renderCustomMessage = props.renderCustomMessage;
     var containerRef = useRef();
     var touchStartRef = useRef();
     var _a = useReducer(reducer, __assign(__assign({}, initReducerData), { moreHeight: moreHeight })), chatData = _a[0], dispatch = _a[1];
@@ -115,6 +115,12 @@ var Chat = function (props) {
         containerRef.current.addEventListener("touchstart", function (e) {
             touchStartRef.current = e.touches[0];
         }, false);
+        containerRef.current.addEventListener("touchend", function () {
+            if (containerRef.current.scrollTop <= 0 &&
+                typeof onMoveToTop === "function") {
+                onMoveToTop();
+            }
+        }, false);
     }, []);
     useEffect(function () {
         scrollGoContainerBottom();
@@ -149,6 +155,9 @@ var Chat = function (props) {
                 return (React.createElement(audio_1.default, { key: itemKey, type: item.author === "master"
                         ? types_1.AuthorTypes.master
                         : types_1.AuthorTypes.guest, text: item.text, avatarUrl: item.authorUrl, readStatus: item.readStatus }));
+            }
+            else if (item.type === "custom") {
+                return renderCustomMessage(item, itemKey);
             }
         })),
         React.createElement(input_1.default, { chatData: chatData, onClickMore: changeMoreVisible, onFocus: onInputFocus, onBlur: onInputBlur, onSendMessage: onSendMessage }),
