@@ -63,6 +63,13 @@ const messageListDefault = [
     authorUrl: "http://watcher.today:9010/data/yang/yimei/guest1.png",
     text: "http://watcher.today:9010/data/yang/yimei/1-mini.jpg",
   },
+  {
+    type: "custom",
+    customData: {
+      a: "a",
+      b: "b",
+    },
+  },
 ];
 
 const App = () => {
@@ -94,7 +101,18 @@ const App = () => {
   const onClickPhoto = () => {
     console.log("on click photo");
   };
+  const onMoveToTop = () => {
+    console.log("the top");
+  };
 
+  const renderCustomMessage = (item: messageTypes, itemKey: string) => {
+    console.log(item);
+    return (
+      <div className="message-custom" key={itemKey}>
+        这是一个自定义消息
+      </div>
+    );
+  };
   return (
     <div>
       <Chat
@@ -102,6 +120,8 @@ const App = () => {
         onSendMessage={onSendMessage}
         // moreHeight={100}
         onClickPhoto={onClickPhoto}
+        onMoveToTop={onMoveToTop}
+        renderCustomMessage={renderCustomMessage}
       />
     </div>
   );

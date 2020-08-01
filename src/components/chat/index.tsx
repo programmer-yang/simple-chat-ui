@@ -23,10 +23,12 @@ interface reducerActionTypes {
 
 export interface messageTypes {
   type: string;
-  text: string;
+  text?: string;
   author?: string;
   authorUrl?: string;
   readStatus?: boolean;
+  // eslint-disable-next-line
+  customData?: any;
 }
 
 export interface chatDataTypes {
@@ -45,6 +47,8 @@ export interface chatPropsTypes {
   // 补全高度 用于不同平台的兼容
   moreHeight?: number;
   onClickPhoto?: () => void;
+  onMoveToTop?: () => void;
+  renderCustomMessage?: (item: messageTypes, key: string) => JSX.Element;
 }
 
 const initReducerData = {
@@ -91,6 +95,8 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
     onSendMessage: onSendMessageProp,
     moreHeight,
     onClickPhoto,
+    onMoveToTop,
+    renderCustomMessage,
   } = props;
 
   const containerRef = useRef<HTMLDivElement>();
@@ -175,6 +181,19 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
       },
       false
     );
+
+    containerRef.current.addEventListener(
+      "touchend",
+      () => {
+        if (
+          containerRef.current.scrollTop <= 0 &&
+          typeof onMoveToTop === "function"
+        ) {
+          onMoveToTop();
+        }
+      },
+      false
+    );
   }, []);
 
   useEffect(() => {
@@ -240,6 +259,8 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
                 readStatus={item.readStatus}
               />
             );
+          } else if (item.type === "custom") {
+            return renderCustomMessage(item, itemKey);
           }
         })}
       </Container>
