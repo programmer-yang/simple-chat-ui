@@ -30,4 +30,3 @@ var Input = function (props) {
             React.createElement("img", { src: addIcon.default ? addIcon.default : addIcon, alt: "", onClick: function () { return onClickMore(!moreVisible); } }))));
 };
 exports.default = Input;
-//# sourceMappingURL=index.js.map

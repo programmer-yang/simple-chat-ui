@@ -44,6 +44,8 @@ var reducer = function (state, action) {
         //     ...state,
         //     messageList: newMessageList,
         //   };
+        case "changeDefaultContainerHeight":
+            return __assign(__assign({}, state), { defaultContainerHeight: Number(action.value) });
         case "changeContainerHeight":
             return __assign(__assign({}, state), { containerHeight: Number(action.value) });
         default:
@@ -85,9 +87,22 @@ var Chat = function (props) {
         // });
         onSendMessageProp(value);
     };
-    useEffect(function () {
+    // // 当输入框焦点发生改编（弹出键盘和隐藏键盘）的时候，更新容器高度
+    // useEffect(() => {
+    //   setTimeout(() => {
+    //     dispatch({ type: "changeContainerHeight", value: window.outerHeight });
+    //     if (chatData.inputFocus) {
+    //       scrollGoContainerBottom();
+    //       if (chatData.moreVisible) {
+    //         dispatch({ type: "changeMoreVisible", value: false });
+    //       }
+    //     }
+    //     scrollGoWindowBottom();
+    //   }, 150);
+    // }, [chatData.inputFocus]);
+    var onInputFocusEffect = function () {
         setTimeout(function () {
-            dispatch({ type: "changeContainerHeight", value: window.innerHeight });
+            dispatch({ type: "changeContainerHeight", value: window.outerHeight });
             if (chatData.inputFocus) {
                 scrollGoContainerBottom();
                 if (chatData.moreVisible) {
@@ -96,7 +111,13 @@ var Chat = function (props) {
             }
             scrollGoWindowBottom();
         }, 150);
-    }, [chatData.inputFocus]);
+    };
+    useEffect(function () {
+        dispatch({ type: "changeContainerHeight", value: window.outerHeight });
+        if (chatData.inputFocus) {
+            onInputFocusEffect();
+        }
+    }, [window.outerHeight]);
     useEffect(function () {
         containerRef.current.addEventListener("touchmove", function (e) {
             var yDiff = touchStartRef.current.clientY - e.touches[0].clientY;
@@ -164,4 +185,3 @@ var Chat = function (props) {
         React.createElement(more_1.default, { moreVisible: chatData.moreVisible, onClickPhoto: onClickPhoto })));
 };
 exports.default = Chat;
-//# sourceMappingURL=index.js.map

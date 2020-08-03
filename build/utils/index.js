@@ -5,4 +5,3 @@ var createCs = function (prefix) { return function (suffix) {
     return suffix ? prefix + "-" + suffix : prefix;
 }; };
 exports.createCs = createCs;
-//# sourceMappingURL=index.js.map

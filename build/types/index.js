@@ -6,4 +6,3 @@ var AuthorTypes;
     AuthorTypes["master"] = "master";
     AuthorTypes["guest"] = "guest";
 })(AuthorTypes = exports.AuthorTypes || (exports.AuthorTypes = {}));
-//# sourceMappingURL=index.js.map

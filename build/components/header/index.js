@@ -15,4 +15,3 @@ var Header = function (props) {
             React.createElement("img", { src: moreIcon.default ? moreIcon.default : moreIcon, alt: "" }))));
 };
 exports.default = Header;
-//# sourceMappingURL=index.js.map

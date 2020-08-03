@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
-    "build:ts": "tsc --project tsc --project ./src/components",
+    "build:ts": "tsc --project tsc --project ./src/components --sourceMap false",
     "build:less": "copyfiles src/components/chat/**/*.less build -a -u 3",
     "build:css": "lessc ./src/components/chat/index.less > build/index.css",
     "build:file": "copyfiles src/components/chat/assets/* build/assets -a -f",

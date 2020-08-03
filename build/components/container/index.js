@@ -16,4 +16,3 @@ var Header = function (props) {
     return (React.createElement("div", { className: cs(), ref: containerRef, style: contianerStyle }, children));
 };
 exports.default = Header;
-//# sourceMappingURL=index.js.map

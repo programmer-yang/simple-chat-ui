@@ -14,4 +14,3 @@ var More = function (props) {
             React.createElement("img", { src: phraseIcon.default ? phraseIcon.default : phraseIcon, alt: "" }))));
 };
 exports.default = More;
-//# sourceMappingURL=index.js.map

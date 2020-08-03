@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/components/chat/components/info/index.tsx"],"names":[],"mappings":";;AAAA,6BAA+B;AAC/B,qCAAuC;AAEvC,IAAM,EAAE,GAAG,gBAAQ,CAAC,qBAAqB,CAAC,CAAC;AAM3C,IAAM,IAAI,GAAwB,UAAC,KAAgB;IACzC,IAAA,IAAI,GAAK,KAAK,KAAV,CAAW;IACvB,OAAO,6BAAK,SAAS,EAAE,EAAE,EAAE,IAAG,IAAI,CAAO,CAAC;AAC5C,CAAC,CAAC;AAEF,kBAAe,IAAI,CAAC"}

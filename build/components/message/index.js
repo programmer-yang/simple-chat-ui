@@ -17,4 +17,3 @@ var Message = function (props) {
                 React.createElement("img", { src: avatarUrl, alt: "" })))) : null));
 };
 exports.default = Message;
-//# sourceMappingURL=index.js.map

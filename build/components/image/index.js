@@ -19,4 +19,3 @@ var Image = function (props) {
                 React.createElement("img", { src: avatarUrl, alt: "" })))) : null));
 };
 exports.default = Image;
-//# sourceMappingURL=index.js.map

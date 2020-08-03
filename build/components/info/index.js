@@ -8,4 +8,3 @@ var Info = function (props) {
     return React.createElement("div", { className: cs() }, text);
 };
 exports.default = Info;
-//# sourceMappingURL=index.js.map
