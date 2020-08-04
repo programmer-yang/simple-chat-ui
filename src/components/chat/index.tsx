@@ -47,6 +47,7 @@ export interface chatPropsTypes {
   // 补全高度 用于不同平台的兼容
   moreHeight?: number;
   onClickPhoto?: () => void;
+  onClickImage?: (url: string) => void;
   onMoveToTop?: () => void;
   renderCustomMessage?: (item: messageTypes, key: string) => JSX.Element;
 }
@@ -102,6 +103,7 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
     onClickPhoto,
     onMoveToTop,
     renderCustomMessage,
+    onClickImage,
   } = props;
 
   const containerRef = useRef<HTMLDivElement>();
@@ -248,6 +250,7 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
                 }
                 text={item.text}
                 avatarUrl={item.authorUrl}
+                onClick={onClickImage}
               />
             );
           } else if (item.type === "audio") {

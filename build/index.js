@@ -53,7 +53,7 @@ var reducer = function (state, action) {
     }
 };
 var Chat = function (props) {
-    var messageList = props.messageList, onSendMessageProp = props.onSendMessage, moreHeight = props.moreHeight, onClickPhoto = props.onClickPhoto, onMoveToTop = props.onMoveToTop, renderCustomMessage = props.renderCustomMessage;
+    var messageList = props.messageList, onSendMessageProp = props.onSendMessage, moreHeight = props.moreHeight, onClickPhoto = props.onClickPhoto, onMoveToTop = props.onMoveToTop, renderCustomMessage = props.renderCustomMessage, onClickImage = props.onClickImage;
     var containerRef = useRef();
     var touchStartRef = useRef();
     var _a = useReducer(reducer, __assign(__assign({}, initReducerData), { moreHeight: moreHeight })), chatData = _a[0], dispatch = _a[1];
@@ -150,7 +150,7 @@ var Chat = function (props) {
             else if (item.type === "image") {
                 return (React.createElement(image_1.default, { key: itemKey, type: item.author === "master"
                         ? types_1.AuthorTypes.master
-                        : types_1.AuthorTypes.guest, text: item.text, avatarUrl: item.authorUrl }));
+                        : types_1.AuthorTypes.guest, text: item.text, avatarUrl: item.authorUrl, onClick: onClickImage }));
             }
             else if (item.type === "audio") {
                 return (React.createElement(audio_1.default, { key: itemKey, type: item.author === "master"
