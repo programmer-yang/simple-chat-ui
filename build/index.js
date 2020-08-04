@@ -81,7 +81,7 @@ var Chat = function (props) {
     // 当输入框焦点发生改编（弹出键盘和隐藏键盘）的时候，更新容器高度
     useEffect(function () {
         setTimeout(function () {
-            console.log("window.outerHeight show", window.innerHeight);
+            dispatch({ type: "changeContainerHeight", value: window.innerHeight });
             if (chatData.inputFocus) {
                 scrollGoContainerBottom();
                 if (chatData.moreVisible) {
@@ -91,7 +91,7 @@ var Chat = function (props) {
             scrollGoWindowBottom();
         }, 150);
     }, [chatData.inputFocus]);
-    // 当容器高度发生改变 记录容器高度（微信路由 键盘弹出）
+    // 当输入框焦点发生改编（弹出键盘和隐藏键盘）的时候，更新容器高度
     useEffect(function () {
         dispatch({
             type: "changeDefaultContainerHeight",
