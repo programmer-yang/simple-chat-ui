@@ -2,6 +2,7 @@ import * as React from "react";
 import { createCs } from "../../utils";
 
 import * as addIcon from "../../assets/add.svg";
+import * as topIcon from "../../assets/top.svg";
 
 import { chatDataTypes } from "../../";
 
@@ -12,32 +13,34 @@ const cs = createCs("component-chat-input");
 interface InputProps {
   onClickMore: (e: boolean) => void;
   chatData: chatDataTypes;
-  onFocus: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onFocus: (e: React.FocusEvent<HTMLPreElement>) => void;
+  onBlur: (e: React.FocusEvent<HTMLPreElement>) => void;
   onSendMessage: (value: string) => void;
 }
 
 const Input: React.FC<InputProps> = (props: InputProps) => {
-  const inputRef = useRef<HTMLDivElement>();
+  const inputContainerRef = useRef<HTMLDivElement>();
+  const inputRef = useRef<HTMLPreElement>();
 
   const { onClickMore, chatData, onFocus, onBlur, onSendMessage } = props;
   const { moreVisible } = chatData;
 
   const [inputValue, setInputValue] = useState<string>("");
 
-  const onTestKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      onSendMessage(inputValue);
-      setInputValue("");
-    }
+  const onClickSend = () => {
+    onSendMessage(inputValue);
+    setInputValue("");
+    inputRef.current.innerHTML = "";
   };
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+    console.log(e.currentTarget.textContent);
+    // setInputValue(inputRef.current.innerHTML);
+    setInputValue(e.currentTarget.textContent);
   };
 
   useEffect(() => {
-    inputRef.current.addEventListener(
+    inputContainerRef.current.addEventListener(
       "touchmove",
       (e) => {
         e.preventDefault();
@@ -46,15 +49,28 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
     );
   }, []);
   return (
-    <div className={cs()} ref={inputRef}>
-      <input
-        type="text"
-        value={inputValue}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onKeyDown={onTestKeyDown}
-        onChange={onChangeInput}
-      />
+    <div className={cs()} ref={inputContainerRef}>
+      <div className={cs("container")}>
+        <pre
+          ref={inputRef}
+          contentEditable
+          className={cs("container-input")}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          onInput={onChangeInput}
+        />
+        <i
+          className={`${cs("container-send")} ${
+            inputValue.length > 0 ? cs("container-send-show") : ""
+          }`}
+        >
+          <img
+            src={topIcon.default ? topIcon.default : topIcon}
+            alt=""
+            onClick={onClickSend}
+          />
+        </i>
+      </div>
       <div className={cs("more")}>
         <img
           src={addIcon.default ? addIcon.default : addIcon}
