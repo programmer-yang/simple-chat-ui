@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import "./index.less";
 import "./components/chat/index.less";
 
@@ -122,10 +123,35 @@ const App = () => {
         onClickPhoto={onClickPhoto}
         onMoveToTop={onMoveToTop}
         renderCustomMessage={renderCustomMessage}
-        disable
+        // disable={}
       />
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const Home = () => {
+  return (
+    <ul>
+      <li>
+        <Link to="/demo1">demo1</Link>
+      </li>
+      <li>
+        <Link to="/demo2">demo2</Link>
+      </li>
+    </ul>
+  );
+};
+
+const Router = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/demo1" exact component={App} />
+        <Route path="/demo2" exact component={App} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
+ReactDOM.render(<Router />, document.getElementById("root"));

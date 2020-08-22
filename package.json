@@ -9,6 +9,7 @@
     "publish": "lerna publish"
   },
   "dependencies": {
+    "@types/react-router-dom": "^5.1.5",
     "@typescript-eslint/eslint-plugin": "^3.6.0",
     "@typescript-eslint/parser": "^3.6.0",
     "copyfiles": "^2.3.0",
@@ -22,6 +23,7 @@
     "lodash.clonedeep": "^4.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "style-loader": "^1.2.1"
   },
   "devDependencies": {

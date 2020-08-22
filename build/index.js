@@ -57,6 +57,8 @@ var Chat = function (props) {
     var containerRef = useRef();
     var touchStartRef = useRef();
     var _b = useReducer(reducer, __assign(__assign({}, initReducerData), { moreHeight: moreHeight })), chatData = _b[0], dispatch = _b[1];
+    console.log("initReducerData", initReducerData);
+    console.log("chatData", chatData);
     var changeMoreVisible = function (type) {
         dispatch({ type: "changeMoreVisible", value: type });
     };
@@ -136,6 +138,12 @@ var Chat = function (props) {
             setTimeout(function () { return scrollGoContainerBottom(); }, 150);
         }
     }, [chatData.moreVisible]);
+    // 页面销毁的操作
+    useEffect(function () {
+        return function () {
+            dispatch({ type: "changeMoreVisible", value: false });
+        };
+    }, []);
     return (React.createElement("div", { className: cs("root") },
         React.createElement(container_1.default, { containerRef: containerRef, chatData: chatData, disable: disable }, messageList.map(function (item, index) {
             var itemKey = "message.item." + index;

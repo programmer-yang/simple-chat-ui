@@ -115,6 +115,9 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
     moreHeight,
   });
 
+  console.log("initReducerData", initReducerData);
+  console.log("chatData", chatData);
+
   const changeMoreVisible = (type: boolean) => {
     dispatch({ type: "changeMoreVisible", value: type });
   };
@@ -219,6 +222,13 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
       setTimeout(() => scrollGoContainerBottom(), 150);
     }
   }, [chatData.moreVisible]);
+
+  // 页面销毁的操作
+  useEffect(() => {
+    return () => {
+      dispatch({ type: "changeMoreVisible", value: false });
+    };
+  }, []);
 
   return (
     <div className={cs("root")}>
