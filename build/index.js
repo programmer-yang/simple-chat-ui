@@ -138,12 +138,6 @@ var Chat = function (props) {
             setTimeout(function () { return scrollGoContainerBottom(); }, 150);
         }
     }, [chatData.moreVisible]);
-    // 页面销毁的操作
-    useEffect(function () {
-        return function () {
-            dispatch({ type: "changeMoreVisible", value: false });
-        };
-    }, []);
     return (React.createElement("div", { className: cs("root") },
         React.createElement(container_1.default, { containerRef: containerRef, chatData: chatData, disable: disable }, messageList.map(function (item, index) {
             var itemKey = "message.item." + index;
@@ -170,6 +164,6 @@ var Chat = function (props) {
             }
         })),
         disable ? null : (React.createElement(input_1.default, { chatData: chatData, onClickMore: changeMoreVisible, onFocus: onInputFocus, onBlur: onInputBlur, onSendMessage: onSendMessage })),
-        React.createElement(more_1.default, { moreVisible: chatData.moreVisible, onClickPhoto: onClickPhoto })));
+        disable ? null : (React.createElement(more_1.default, { moreVisible: chatData.moreVisible, onClickPhoto: onClickPhoto }))));
 };
 exports.default = Chat;

@@ -223,13 +223,6 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
     }
   }, [chatData.moreVisible]);
 
-  // 页面销毁的操作
-  useEffect(() => {
-    return () => {
-      dispatch({ type: "changeMoreVisible", value: false });
-    };
-  }, []);
-
   return (
     <div className={cs("root")}>
       {/* <Header name="李冰医生" /> */}
@@ -297,7 +290,9 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
           onSendMessage={onSendMessage}
         />
       )}
-      <More moreVisible={chatData.moreVisible} onClickPhoto={onClickPhoto} />
+      {disable ? null : (
+        <More moreVisible={chatData.moreVisible} onClickPhoto={onClickPhoto} />
+      )}
     </div>
   );
 };
