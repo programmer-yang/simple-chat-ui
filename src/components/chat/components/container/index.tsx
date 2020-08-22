@@ -9,10 +9,11 @@ interface ContainerProps {
   children: JSX.Element[] | JSX.Element;
   containerRef?: React.MutableRefObject<HTMLDivElement>;
   chatData: chatDataTypes;
+  disable?: boolean;
 }
 
 const Header: React.FC<ContainerProps> = (props: ContainerProps) => {
-  const { children, containerRef, chatData } = props;
+  const { children, containerRef, chatData, disable } = props;
 
   const contianerStyle: { height?: string } = {};
 
@@ -21,7 +22,9 @@ const Header: React.FC<ContainerProps> = (props: ContainerProps) => {
   const containerHeightDiff =
     defaultContainerHeight - containerHeight + moreHeight;
 
-  contianerStyle.height = `calc(100vh - 54px - ${containerHeightDiff}px)`;
+  contianerStyle.height = `calc(100vh - ${
+    disable ? 0 : 54
+  }px - ${containerHeightDiff}px)`;
   if (chatData.inputFocus) {
   } else {
   }

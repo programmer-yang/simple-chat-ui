@@ -122,6 +122,7 @@ const App = () => {
         onClickPhoto={onClickPhoto}
         onMoveToTop={onMoveToTop}
         renderCustomMessage={renderCustomMessage}
+        disable
       />
     </div>
   );

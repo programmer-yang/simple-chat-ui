@@ -34,7 +34,6 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
   };
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget.textContent);
     // setInputValue(inputRef.current.innerHTML);
     setInputValue(e.currentTarget.textContent);
   };

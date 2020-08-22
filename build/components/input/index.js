@@ -18,7 +18,6 @@ var Input = function (props) {
         inputRef.current.innerHTML = "";
     };
     var onChangeInput = function (e) {
-        console.log(e.currentTarget.textContent);
         // setInputValue(inputRef.current.innerHTML);
         setInputValue(e.currentTarget.textContent);
     };

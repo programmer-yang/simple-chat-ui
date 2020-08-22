@@ -53,10 +53,10 @@ var reducer = function (state, action) {
     }
 };
 var Chat = function (props) {
-    var messageList = props.messageList, onSendMessageProp = props.onSendMessage, moreHeight = props.moreHeight, onClickPhoto = props.onClickPhoto, onMoveToTop = props.onMoveToTop, renderCustomMessage = props.renderCustomMessage, onClickImage = props.onClickImage;
+    var messageList = props.messageList, onSendMessageProp = props.onSendMessage, moreHeight = props.moreHeight, onClickPhoto = props.onClickPhoto, onMoveToTop = props.onMoveToTop, renderCustomMessage = props.renderCustomMessage, onClickImage = props.onClickImage, _a = props.disable, disable = _a === void 0 ? false : _a;
     var containerRef = useRef();
     var touchStartRef = useRef();
-    var _a = useReducer(reducer, __assign(__assign({}, initReducerData), { moreHeight: moreHeight })), chatData = _a[0], dispatch = _a[1];
+    var _b = useReducer(reducer, __assign(__assign({}, initReducerData), { moreHeight: moreHeight })), chatData = _b[0], dispatch = _b[1];
     var changeMoreVisible = function (type) {
         dispatch({ type: "changeMoreVisible", value: type });
     };
@@ -137,7 +137,7 @@ var Chat = function (props) {
         }
     }, [chatData.moreVisible]);
     return (React.createElement("div", { className: cs("root") },
-        React.createElement(container_1.default, { containerRef: containerRef, chatData: chatData }, messageList.map(function (item, index) {
+        React.createElement(container_1.default, { containerRef: containerRef, chatData: chatData, disable: disable }, messageList.map(function (item, index) {
             var itemKey = "message.item." + index;
             if (item.type === "info") {
                 return React.createElement(info_1.default, { key: itemKey, text: item.text });
@@ -161,7 +161,7 @@ var Chat = function (props) {
                 return renderCustomMessage(item, itemKey);
             }
         })),
-        React.createElement(input_1.default, { chatData: chatData, onClickMore: changeMoreVisible, onFocus: onInputFocus, onBlur: onInputBlur, onSendMessage: onSendMessage }),
+        disable ? null : (React.createElement(input_1.default, { chatData: chatData, onClickMore: changeMoreVisible, onFocus: onInputFocus, onBlur: onInputBlur, onSendMessage: onSendMessage })),
         React.createElement(more_1.default, { moreVisible: chatData.moreVisible, onClickPhoto: onClickPhoto })));
 };
 exports.default = Chat;

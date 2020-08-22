@@ -50,6 +50,7 @@ export interface chatPropsTypes {
   onClickImage?: (url: string) => void;
   onMoveToTop?: () => void;
   renderCustomMessage?: (item: messageTypes, key: string) => JSX.Element;
+  disable?: boolean; // 禁止输入
 }
 
 const initReducerData = {
@@ -104,6 +105,7 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
     onMoveToTop,
     renderCustomMessage,
     onClickImage,
+    disable = false,
   } = props;
 
   const containerRef = useRef<HTMLDivElement>();
@@ -221,7 +223,11 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
   return (
     <div className={cs("root")}>
       {/* <Header name="李冰医生" /> */}
-      <Container containerRef={containerRef} chatData={chatData}>
+      <Container
+        containerRef={containerRef}
+        chatData={chatData}
+        disable={disable}
+      >
         {messageList.map((item: messageTypes, index: number) => {
           const itemKey = `message.item.${index}`;
           if (item.type === "info") {
@@ -272,13 +278,15 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
           }
         })}
       </Container>
-      <Input
-        chatData={chatData}
-        onClickMore={changeMoreVisible}
-        onFocus={onInputFocus}
-        onBlur={onInputBlur}
-        onSendMessage={onSendMessage}
-      />
+      {disable ? null : (
+        <Input
+          chatData={chatData}
+          onClickMore={changeMoreVisible}
+          onFocus={onInputFocus}
+          onBlur={onInputBlur}
+          onSendMessage={onSendMessage}
+        />
+      )}
       <More moreVisible={chatData.moreVisible} onClickPhoto={onClickPhoto} />
     </div>
   );
