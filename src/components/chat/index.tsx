@@ -115,9 +115,6 @@ const Chat: React.FC<chatPropsTypes> = (props: chatPropsTypes) => {
     moreHeight,
   });
 
-  console.log("initReducerData", initReducerData);
-  console.log("chatData", chatData);
-
   const changeMoreVisible = (type: boolean) => {
     dispatch({ type: "changeMoreVisible", value: type });
   };

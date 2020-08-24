@@ -57,8 +57,6 @@ var Chat = function (props) {
     var containerRef = useRef();
     var touchStartRef = useRef();
     var _b = useReducer(reducer, __assign(__assign({}, initReducerData), { moreHeight: moreHeight })), chatData = _b[0], dispatch = _b[1];
-    console.log("initReducerData", initReducerData);
-    console.log("chatData", chatData);
     var changeMoreVisible = function (type) {
         dispatch({ type: "changeMoreVisible", value: type });
     };
