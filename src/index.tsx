@@ -21,48 +21,48 @@ const messageListDefault = [
   {
     type: "image",
     author: "guest",
-    authorUrl: "http://watcher.today:9010/data/yang/yimei/guest1.png",
-    text: "http://watcher.today:9010/data/yang/yimei/1-mini.jpg",
+    authorUrl: "http://39.108.94.69:9010/data/yang/yimei/guest1.png",
+    text: "http://39.108.94.69:9010/data/yang/yimei/1-mini.jpg",
   },
   {
     type: "message",
     author: "master",
-    authorUrl: "http://watcher.today:9010/data/yang/yimei/master1.png",
+    authorUrl: "http://39.108.94.69:9010/data/yang/yimei/master1.png",
     text:
       "您好，感谢信任，目前为抗击新冠病毒的特殊时期，我将在临床工作之余尽快回复，如有回复不及时，请您理解",
   },
   {
     type: "message",
     author: "guest",
-    authorUrl: "http://watcher.today:9010/data/yang/yimei/guest1.png",
+    authorUrl: "http://39.108.94.69:9010/data/yang/yimei/guest1.png",
     text:
       "我最近的血糖值异常，空腹血糖正常值在9mmol/L，餐后两小时血糖的正常值在8mmol/L，请问这个是不是整形后的异常情况",
   },
   {
     type: "image",
     author: "master",
-    authorUrl: "http://watcher.today:9010/data/yang/yimei/guest1.png",
-    text: "http://watcher.today:9010/data/yang/yimei/1-mini.jpg",
+    authorUrl: "http://39.108.94.69:9010/data/yang/yimei/guest1.png",
+    text: "http://39.108.94.69:9010/data/yang/yimei/1-mini.jpg",
   },
   {
     type: "audio",
     author: "master",
-    authorUrl: "http://watcher.today:9010/data/yang/yimei/guest1.png",
-    text: "http://watcher.today:9010/data/yang/yimei/1-mini.jpg",
+    authorUrl: "http://39.108.94.69:9010/data/yang/yimei/guest1.png",
+    text: "http://39.108.94.69:9010/data/yang/yimei/1-mini.jpg",
     readStatus: true,
   },
   {
     type: "audio",
     author: "master",
-    authorUrl: "http://watcher.today:9010/data/yang/yimei/guest1.png",
-    text: "http://watcher.today:9010/data/yang/yimei/1-mini.jpg",
+    authorUrl: "http://39.108.94.69:9010/data/yang/yimei/guest1.png",
+    text: "http://39.108.94.69:9010/data/yang/yimei/1-mini.jpg",
     readStatus: false,
   },
   {
     type: "audio",
     author: "guest",
-    authorUrl: "http://watcher.today:9010/data/yang/yimei/guest1.png",
-    text: "http://watcher.today:9010/data/yang/yimei/1-mini.jpg",
+    authorUrl: "http://39.108.94.69:9010/data/yang/yimei/guest1.png",
+    text: "http://39.108.94.69:9010/data/yang/yimei/1-mini.jpg",
   },
   {
     type: "custom",
@@ -86,13 +86,13 @@ const App = () => {
     newMessageList.push({
       type: "message",
       author: "guest",
-      authorUrl: "http://watcher.today:9010/data/yang/yimei/master1.png",
+      authorUrl: "http://39.108.94.69:9010/data/yang/yimei/master1.png",
       text: value,
     });
     newMessageList.push({
       type: "message",
       author: "master",
-      authorUrl: "http://watcher.today:9010/data/yang/yimei/guest1.png",
+      authorUrl: "http://39.108.94.69:9010/data/yang/yimei/guest1.png",
       text: "稍等一下，测试中",
     });
 
@@ -101,6 +101,15 @@ const App = () => {
 
   const onClickPhoto = () => {
     console.log("on click photo");
+    const newMessageList = [...messageList];
+    newMessageList.push({
+      type: "image",
+      author: "master",
+      authorUrl: "http://39.108.94.69:9010/data/yang/yimei/master1.png",
+      text: "http://39.108.94.69:9010/data/yang/yimei/1-mini.jpg",
+    });
+
+    setMessageList(newMessageList);
   };
   const onMoveToTop = () => {
     console.log("the top");

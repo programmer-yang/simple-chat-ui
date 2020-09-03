@@ -114,6 +114,7 @@
   height: 40px;
   border-radius: 20px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .component-chat-message .avatar img {
   width: 100%;
