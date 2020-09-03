@@ -164,6 +164,7 @@
   height: 40px;
   border-radius: 20px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .component-chat-image .avatar img {
   width: 100%;
@@ -212,6 +213,7 @@
   height: 40px;
   border-radius: 20px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .component-chat-audio .avatar img {
   width: 100%;
