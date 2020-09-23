@@ -1,8 +1,10 @@
 ## simple-chat-ui
 
-是一个用于移动端 IM 的轻量级 UI，它很小，目前支持文本、图片、语音、自定义信息。
+是一个用于移动端 IM 的轻量级 UI，它很小。目前支持文本、图片、语音、自定义信息。
 
-## 使用步骤
+![alt demo](http://39.108.94.69:9010/data/yang/blogs/simplechatuidemo001.jpg)
+
+## 使用
 
 ```bash
 yanr add simple-chat-ui
